@@ -32,13 +32,19 @@ app.use(express.static('assets'));
 app.get('/hoteles', (req, res) => {
 
     var stars = parseInt(req.query.stars);
+    var nameHotel = req.query.nameHotel;
 
-    var hotel = [];
+    //console.log(stars);
+    //console.log(nameHotel);
 
-    if (stars === 0) {
-        hotel = hoteles;
-    } else {
-        hotel = hoteles.filter(function (h) {
+    var hotel = hoteles;
+
+    hotel = hoteles.filter(function (h) {
+        return h.name.includes(nameHotel);
+    })
+
+    if (stars !== 0) {
+        hotel = hotel.filter(function (h) {
             return h.stars === stars;
         })
     }
