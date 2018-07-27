@@ -28,15 +28,11 @@ app.use(function (req, res, next) {
 });
 
 app.use(express.static('assets'));
-app.use(express.static('www'));
 
 app.get('/hoteles', (req, res) => {
 
     var stars = parseInt(req.query.stars);
     var nameHotel = req.query.nameHotel;
-
-    //console.log(stars);
-    //console.log(nameHotel);
 
     var hotel = hoteles;
 
